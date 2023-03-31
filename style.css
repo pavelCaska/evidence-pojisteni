@@ -1,0 +1,32 @@
+body {
+	background-color: whitesmoke;
+}
+/* 96px je vyska navigace poskladane vertikalne na malych zarizenich - bez marginu jsou na sm zarizenich H2 a prip. tlacitko schovane pod navigaci*/
+.container {
+	margin-top: 56px;
+	padding-top: 32px;
+}
+
+.container-fluid {
+	margin-top: 56px;
+}
+
+/* dle zadani maji byt odkazy v tabulkach podtrzene, coz v Bootstrapu neni defaultni nastaveni, oproti zadani jsem pouzil hover */
+td > a:hover {
+	text-decoration: underline;
+}
+.img-fluid {
+	max-width: 99%;
+	height: auto;
+}
+
+@media screen and (max-width: 600px) {
+	.container-fluid {
+		margin-top: 136px;
+	}
+	.container {
+		margin-top: 136px;
+		padding-top: 0px;
+	}
+	
+}

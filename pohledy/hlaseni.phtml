@@ -1,0 +1,28 @@
+<div class="container-fluid">
+		<h2 class="py-lg-3">Chronologický přehled škodních událostí</h2>
+		<table class="table table-bordered table-hover table-responsive-sm">
+			<thead>
+				<th>Pojištěnec</th>
+				<th>Produkt</th>
+				<th>Škodní událost</th>
+				<th style="text-align:center">Vznik</th>
+				<th style="text-align:center">Výše škody</th>
+				<th style="text-align:center">Nahlášeno</th>
+				<th style="text-align:center">Stav</th>
+			</thead>
+			<tbody>
+				<?php foreach ($udalosti as $udalost) : ?>
+					<tr>
+						<td><a href="stavajici-pojistenec/<?=$udalost['pojistenci_id']?>"><?= $udalost['jmeno'] . ' ' . $udalost['prijmeni']?></a></td>
+						<td><a href="detail-pojisteni/<?=$udalost['pojistenci_id']?>/<?=$udalost['produkt_id']?>"><?= $udalost['poj_produkt']?></a></td>
+						<td><a href="nahlizet-hlaseni/<?=$udalost['pojistenci_id']?>/<?=$udalost['produkt_id']?>/<?=$udalost['hlaseni_id']?>"><?= $udalost['nazev']?></a></td>
+						<td style="text-align:right"><?= FormatHelper::datumDoFormulare($udalost['datum_vzniku'])?></td>
+						<td style="text-align:right"><?= number_format($udalost['vyse_skody'], 0, ',', '.') . ' Kč'?></td>
+						<td style="text-align:right"><?= FormatHelper::datumDoFormulare($udalost['datum_nahlaseni'])?></td>
+						<td style="text-align:center"><?php if (!$udalost['zpracovano']) {echo 'Nové hlášení';} else {echo 'Zpracováno';}?></td>
+					</tr>
+				<?php endforeach ?>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,117 @@
+<div class="container">
+	<h2 class="py-lg-3"><?= $pojistenec['jmeno'] . ' ' . $pojistenec['prijmeni'] ?></h2>
+	<div class="d-sm-flex">
+		<div class="col-md-12">
+			<div class="d-sm-flex">
+				<div class="pl-0 col-md-4 col-sm-6">
+					<div class="d-flex justify-content-start">
+						<i class="bi bi-house px-1 pt-1"></i>
+						<p class="text-left"><?= $pojistenec['ulice_cp'] . ', ' .	$pojistenec['mesto'] ?></p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="d-flex justify-content-center">
+						<i class="bi bi-envelope-at px-1 pt-1"></i>
+						<p class="text-center" style="word-wrap: break-word;"><?= $pojistenec['email'] ?></p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="d-flex justify-content-end">
+						<i class="bi bi-telephone px-1 pt-1"></i>
+						<p class="text-right"><?= $pojistenec['telefon'] ?></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<form action="" class="col" method="post">
+			<div class="d-sm-flex">
+				<div class="form-group col-md-12">
+					<label for="pojisteni">Pojištění</label>
+					<input class="form-control" name="poj_produkt" id="pojisteni" value="<?= htmlspecialchars($produkt['poj_produkt']) ?>" disabled>
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-6">
+					<label for="poj-castka">Pojistná částka</label>
+					<input type="text" class="form-control" id="poj-castka" name="poj_castka" value="<?= htmlspecialchars($produkt['poj_castka']) ?>" disabled>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="predmet-poj">Předmět pojištění</label>
+					<input type="text" class="form-control" id="predmet-poj" name="predmet_poj" value="<?= htmlspecialchars($produkt['predmet_poj']) ?>" disabled>
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-6">
+					<label for="platnost-od">Platnost od:</label>
+					<input type="text" class="form-control" id="platnost-od" name="platnost_od" value="<?= htmlspecialchars(FormatHelper::datumDoFormulare($produkt['platnost_od'])) ?>" disabled>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="platnost-do">Platnost do:</label>
+					<input type="text" class="form-control" id="platnost-do" name="platnost_do" value="<?= htmlspecialchars(FormatHelper::datumDoFormulare($produkt['platnost_do'])) ?>" disabled>
+				</div>
+			</div>
+		</form>
+	</div>
+	<?php if (!$uzivatel['admin']) : ?>
+		<div class="row justify-content-center py-lg-3">
+			<a href="nove-hlaseni/<?= $id_pojistence ?>/<?= $produkt['pojisteni_id'] ?>" class="btn btn-primary px-3">Nahlásit škodní událost</a>
+		</div>
+	<?php else : ?>
+		<div class="row justify-content-center py-lg-3">
+			<a href="nova-udalost/<?= $id_pojistence ?>/<?= $produkt['pojisteni_id'] ?>" class="btn btn-primary px-3">Nová pojistná událost</a>
+		</div>
+	<?php endif ?>
+	<table class="table table-bordered table-hover table-responsive-sm">
+		<thead>
+			<th>Pojistná událost</th>
+			<th style="text-align:center">Vznik</th>
+			<th style="text-align:center">Výše škody</th>
+			<th style="text-align:center">Spoluúčast</th>
+			<th style="text-align:center">Pojistné plnění</th>
+			<th style="text-align:center">Vyplaceno</th>
+		</thead>
+		<tbody>
+			<?php foreach ($udalosti as $udalost) : ?>
+				<tr>
+					<td><a href="editovat-udalost/<?= $id_pojistence ?>/<?= $produkt['pojisteni_id'] ?>/<?= $udalost['udalosti_id'] ?>"><?= $udalost['nazev'] ?></a></td>
+					<td style="text-align:right"><?= FormatHelper::datumDoFormulare($udalost['datum_vzniku']) ?></td>
+					<td style="text-align:right"><?= number_format($udalost['vyse_skody'], 0, ',', '.') . ' Kč'?></td>
+					<td style="text-align:right"><?= number_format($udalost['spoluucast'], 0, ',', '.') . ' Kč'?></td>
+					<td style="text-align:right"><?= number_format($udalost['vyse_plneni'], 0, ',', '.') . ' Kč'?></td>
+					<td style="text-align:right"><?= FormatHelper::datumDoFormulare($udalost['datum_vyplaty']) ?></td>
+					<?php if ($uzivatel['admin']) : ?>
+						<td>
+							<div class="row">
+								<form action="" method="post">
+									<input type="hidden" name="udalosti_id_edituj" value="<?= $udalost['udalosti_id'] ?>">
+									<input type="submit" class="btn btn-warning text-white ml-2 mb-1 px-2" value="Editovat">
+								</form>
+								<form action="" method="post">
+									<input type="hidden" name="udalosti_id_smaz" value="<?= $udalost['udalosti_id'] ?>">
+									<input type="submit" class="btn btn-danger text-white ml-2 mb-1 px-2" value="Smazat">
+								</form>
+							</div>
+						</td>
+					<?php else : ?>
+						<td>
+							<div class="row">
+								<form action="" method="post">
+									<input type="hidden" name="udalosti_id_edituj" value="<?= $udalost['udalosti_id'] ?>">
+									<input type="submit" class="btn btn-warning text-white ml-2 mb-1 px-3" value="Detail">
+								</form>
+							</div>
+						</td>
+
+					<?php endif ?>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+	<div class="d-sm-flex justify-content-center">
+		<a href="<?=$_SESSION['previous_location']?>" class="btn btn-secondary px-5 mb-lg-5">Zpět</a>
+	</div>
+</div>

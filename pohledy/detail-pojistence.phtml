@@ -1,0 +1,73 @@
+<div class="container">
+	<div class="d-sm-flex">
+		<div class="col-md-2">
+			<img src="../person-icon.png" class="img-fluid img-thumbnail" alt="Symbol osoby">
+		</div>
+		<div class="col-md-10">
+			<h2><?= $pojistenec['jmeno'] . ' ' . $pojistenec['prijmeni'] ?></h2>
+			<div class="d-sm-flex">
+				<div class="col-md-6 col-sm-6">
+					<p><?= $pojistenec['ulice_cp'] ?></p>
+					<p><?= $pojistenec['mesto'] ?></p>
+					<p><?= $pojistenec['psc'] ?></p>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<p style="word-wrap: break-word;"><?= $pojistenec['email'] ?></p>
+					<p><?= $pojistenec['telefon'] ?></p>
+					<p>Reg. kód: <?= $pojistenec['registr_kod'] ?></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h2 class="py-lg-5">Sjednaná pojištění</h2>
+
+	<table class="table table-bordered table-hover table-responsive-sm">
+		<thead>
+			<th>Pojištění</th>
+			<th style="text-align:center">Pojistná částka</th>
+		</thead>
+		<tbody>
+			<?php foreach ($pojisteni as $produkt) : ?>
+				<tr>
+					<td><a href="detail-pojisteni/<?= $id_pojistence ?>/<?= $produkt['pojisteni_id'] ?>"><?= $produkt['poj_produkt'] ?></a></td>
+					<td style="text-align:right; padding-right:1rem;"><?= number_format($produkt['poj_castka'], 0, ',', '.') . ' Kč' ?></td>
+					<?php if ($uzivatel['admin']) : ?>
+					<td>
+						<div class="row">
+							<form action="" method="post">
+								<input type="hidden" name="pojisteni_id_edituj" value="<?= $produkt['pojisteni_id'] ?>">
+								<input type="submit" class="btn btn-warning text-white ml-2 mb-1 px-2" value="Editovat">
+							</form>
+							<form action="" method="post">
+								<input type="hidden" name="pojisteni_id_smaz" value="<?= $produkt['pojisteni_id'] ?>">
+								<input type="submit" class="btn btn-danger text-white ml-2 mb-1 px-2" value="Smazat">
+							</form>
+						</div>
+					</td>
+					<?php else : ?>
+					<td>
+						<div class="row">
+							<form action="" method="post">
+								<input type="hidden" name="pojisteni_id_edituj" value="<?= $produkt['pojisteni_id'] ?>">
+								<input type="submit" class="btn btn-warning text-white ml-2 mb-1 px-3" value="Detail">
+							</form>
+						</div>
+					</td>
+
+					<?php endif ?>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+
+	<?php if ($uzivatel['admin']) : ?>
+	<div class="row justify-content-center mt-lg-5">
+		<a href="pridat-pojisteni/<?= $id_pojistence ?>" class="btn btn-primary text-white ml-2 mb-1 px-2">Přidat pojištění</a>
+		<a href="stavajici-pojistenec/<?= $id_pojistence ?>" class="btn btn-warning text-white ml-2 mb-1 px-2">Editovat pojištěnce</a>
+		<form action="" method="post" class="btn btn-danger text-white ml-2 mb-1 pt-0">
+			<input type="hidden" name="pojistenci_id_smaz" value="<?= $id_pojistence ?>">
+			<input type="submit" class="btn btn-danger text-white px-0" value="Smazat pojištěnce">
+		</form>
+	</div>
+	<?php endif ?>
+</div>

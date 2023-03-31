@@ -1,0 +1,56 @@
+<div class="container">
+	<h2 class="pb-lg-5">Nový pojištěnec</h2>
+
+	<div class="row">
+		<form action="" class="col" method="post">
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="jmeno">Jméno</label>
+					<input type="text" class="form-control" id="jmeno" name="jmeno" placeholder="Jan" value="<?php if (isset($_POST['jmeno'])) echo (htmlspecialchars($_POST['jmeno'])); ?>" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="prijmeni">Příjmení</label>
+					<input type="text" class="form-control" name="prijmeni" id="prijmeni" placeholder="Novák" value="<?php if (isset($_POST['prijmeni'])) echo (htmlspecialchars($_POST['prijmeni'])); ?>" />
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="email">E-mail</label>
+					<input type="email" class="form-control" id="email" name="email" placeholder="jannovak88@seznam.cz" value="<?php if (isset($_POST['email'])) echo (htmlspecialchars($_POST['email'])); ?>" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="telefon">Telefon</label>
+					<input type="tel" class="form-control" id="telefon" name="telefon" placeholder="731 584 972" value="<?php if (isset($_POST['telefon'])) echo (htmlspecialchars($_POST['telefon'])); ?>" />
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="ulice-cislo">Ulice a číslo popisné</label>
+					<input type="text" class="form-control" id="ulice-cislo" name="ulice_cp" placeholder="Ve Svahu 3" value="<?php if (isset($_POST['ulice_cp'])) echo (htmlspecialchars($_POST['ulice_cp'])); ?>" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="mesto">Město</label>
+					<input type="text" class="form-control" id="mesto" name="mesto" placeholder="Praha 1" value="<?php if (isset($_POST['mesto'])) echo (htmlspecialchars($_POST['mesto'])); ?>" />
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group offset-md-4 col-md-4">
+					<label for="psc">PSČ</label>
+					<input type="text" class="form-control" id="psc" name="psc" placeholder="100 00" value="<?php if (isset($_POST['psc'])) echo (htmlspecialchars($_POST['psc'])); ?>" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="d-sm-flex col-md-4 justify-content-center">
+					<a href="<?=$_SESSION['previous_location']?>" class="btn btn-secondary px-5 mt-lg-5">Zpět</a>
+				</div>
+				<div class="d-sm-flex col-md-4 justify-content-center">
+					<input type="submit" class="btn btn-primary px-5 mt-lg-5" value="Uložit">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

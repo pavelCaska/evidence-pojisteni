@@ -1,0 +1,51 @@
+<div class="container">
+	<h2 class="pb-lg-5">Registrace</h2>
+
+	<div class="row">
+		<form action="" class="col" method="post">
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="jmeno">Jméno</label>
+					<input type="text" class="form-control" id="jmeno" name="jmeno" placeholder="Jan" value="<?php if (isset($_POST['jmeno'])) echo (htmlspecialchars($_POST['jmeno'])); ?>" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="prijmeni">Příjmení</label>
+					<input type="text" class="form-control" name="prijmeni" id="prijmeni" placeholder="Novák" value="<?php if (isset($_POST['prijmeni'])) echo (htmlspecialchars($_POST['prijmeni'])); ?>" />
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="email">E-mail uvedený v pojistné smlouvě</label>
+					<input type="email" class="form-control" id="email" name="email" placeholder="jannovak88@seznam.cz" value="<?php if (isset($_POST['email'])) echo (htmlspecialchars($_POST['email'])); ?>" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="registr_kod">Registrační kód</label>
+					<input type="text" class="form-control" id="registr_kod" name="registr_kod" placeholder="" value="<?php if (isset($_POST['registr_kod'])) echo (htmlspecialchars($_POST['registr_kod'])); ?>" />
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="prezdivka">Přihlašovací jméno - přezdívka</label>
+					<input type="text" class="form-control" id="prezdivka" name="prezdivka" placeholder="jannovak" value="<?php if (isset($_POST['prezdivka'])) echo (htmlspecialchars($_POST['prezdivka'])); ?>" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="mesto">Heslo</label>
+					<input type="password" class="form-control" id="heslo" name="heslo" />
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group offset-md-4 col-md-4">
+					<label for="heslo_znovu">Potvrďte heslo</label>
+					<input type="password" class="form-control" id="heslo_znovu" name="heslo_znovu" />
+				</div>
+			</div>
+
+			<div class="d-sm-flex col-md-8 justify-content-center">
+				<input type="submit" class="btn btn-primary px-5 mt-lg-5" value="Registrovat">
+			</div>
+		</form>
+	</div>
+</div>

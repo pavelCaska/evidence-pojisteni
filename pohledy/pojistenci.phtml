@@ -1,0 +1,33 @@
+<div class="container">
+	<h2>Pojištěnci</h2>
+	<div class="row justify-content-center py-lg-5">
+		<a href="novy-pojistenec" class="btn btn-primary px-5">Nový pojištěnec</a>
+	</div>
+
+	<table class="table table-bordered table-hover table-responsive-sm">
+		<thead>
+			<th>Jméno a příjmení</th>
+			<th>Bydliště</th>
+		</thead>
+		<tbody>
+			<?php foreach ($pojistenci as $pojistenec) : ?>
+				<tr>
+					<td><a href="detail-pojistence/<?= $pojistenec['pojistenci_id'] ?>"><?= $pojistenec['jmeno'] . ' ' . $pojistenec['prijmeni'] ?></a></td>
+					<td><?= $pojistenec['ulice_cp'] . ', ' . $pojistenec['mesto'] ?></td>
+					<td>
+						<div class="row">
+							<form action="" method="post">
+								<input type="hidden" name="pojistenci_id_edituj" value="<?= $pojistenec['pojistenci_id'] ?>">
+								<input type="submit" class="btn btn-warning text-white ml-2 mb-1 px-2" value="Editovat">
+							</form>
+							<form action="" method="post">
+								<input type="hidden" name="pojistenci_id_smaz" value="<?= $pojistenec['pojistenci_id'] ?>">
+								<input type="submit" class="btn btn-danger text-white ml-2 mb-1 px-2" value="Smazat">
+							</form>
+						</div>
+					</td>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+</div>

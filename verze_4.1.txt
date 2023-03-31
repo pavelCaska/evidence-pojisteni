@@ -1,0 +1,19 @@
+Hotovo
+- stranky
+- zpravy 
+- zabezpeceni $_POST
+- komentare - smazat / pridat
+- jednoducha validace
+- autentizace
+- rozsireni zprav o enum
+- uprava formatu ve vypisech pomoci foreach/nikoli ve formularich
+- uprava tlacitka zpet
+- osetreni chyb pomoci vyjimek
+- ify predelane na vyjimky (try/catch)
+- komentare
+
+verze 4.1
+
+Dalsi mozna rozsireni
+- paginace
+- statistiky

@@ -1,0 +1,50 @@
+<div class="container">
+	<h2 class="pb-lg-5">Přidat pojištění pojištěnci <?= $pojistenec['jmeno'] . ' ' . $pojistenec['prijmeni'] ?></h2>
+	
+	<div class="row">
+		<form action="" class="col" method="post">
+			<div class="d-sm-flex">
+				<div class="form-group col-md-8">
+					<label for="pojisteni">Pojištění</label>
+					<select class="form-control" name="poj_produkt" id="pojisteni">
+						<option value="Pojištění nemovitosti">Pojištění nemovitosti</option>
+						<option value="Pojištění domácnosti">Pojištění domácnosti</option>
+						<option value="Havarijní pojištění">Havarijní pojištění</option>
+						<option value="Pojištění zákonné odpovědnosti z provozu motorových vozidel">Pojištění zákonné odpovědnosti z provozu motorových vozidel</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="poj-castka">Pojistná částka</label>
+					<input type="number" class="form-control" id="poj-castka" name="poj_castka" placeholder="1111" value="<?php if (isset($_POST['poj_castka'])) echo (htmlspecialchars($_POST['poj_castka'])); ?>">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="predmet-poj">Předmět pojištění</label>
+					<input type="text" class="form-control" id="predmet-poj" name="predmet_poj" placeholder="Byt" value="<?php if (isset($_POST['predmet_poj'])) echo (htmlspecialchars($_POST['predmet_poj'])); ?>">
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="platnost-od">Platnost od:</label>
+					<input type="text" class="form-control" id="platnost-od" name="platnost_od" placeholder="1.1.1111" value="<?php if (isset($_POST['platnost_od'])) echo (htmlspecialchars($_POST['platnost_od'])); ?>">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="platnost-do">Platnost do:</label>
+					<input type="text" class="form-control" id="platnost-do" name="platnost_do" placeholder="1.1.1111" value="<?php if (isset($_POST['platnost_do'])) echo (htmlspecialchars($_POST['platnost_do'])); ?>">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="d-sm-flex col-md-4 justify-content-center">
+					<a href="<?=$_SESSION['previous_location']?>" class="btn btn-secondary px-5 mt-lg-5">Zpět</a>
+				</div>
+				<div class="d-sm-flex col-md-4 justify-content-center">
+					<input type="submit" class="btn btn-primary px-5 mt-lg-5" value="Uložit">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+	<h2 class="pb-lg-5">Hlášení o škodní události <?php if($uzivatel['admin']) {echo 'pojištěnce ' . htmlspecialchars($pojistenec['jmeno']) . ' ' . htmlspecialchars($pojistenec['prijmeni']);} ?></h2>
+
+	<div class="row">	
+		<form action="" class="col" method="">
+			<div class="d-sm-flex">
+				<div class="form-group col-md-8">
+					<label for="pojisteni">Pojistný produkt</label>
+					<input class="form-control" name="poj_produkt" id="pojisteni" value="<?= htmlspecialchars($produkt['poj_produkt']) ?>" disabled>
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="nazev-udalosti">Název škodní události</label>
+					<input type="text" class="form-control" id="nazev-udalosti" name="nazev" value="<?= htmlspecialchars($udalost['nazev']) ?>" disabled>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="vyse-skody">Výše škody</label>
+					<input type="number" class="form-control" id="vyse-skody" name="vyse_skody" value="<?= htmlspecialchars($udalost['vyse_skody'])?>" disabled>
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="datum-vzniku">Datum vzniku:</label>
+					<input type="text" class="form-control" id="datum-vzniku" name="datum_vzniku" value="<?= htmlspecialchars(FormatHelper::datumDoFormulare($udalost['datum_vzniku']))?>" disabled>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="datum-nahlaseni">Datum nahlášení:</label>
+					<input type="text" class="form-control" id="datum-nahlaseni" value="<?= htmlspecialchars(FormatHelper::datumDoFormulare($udalost['datum_nahlaseni'])) ?>" disabled>
+				</div>
+			</div>
+			
+			<div class="row">
+				<?php if ($uzivatel['admin'] && $udalost['zpracovano'] === 0)  : ?>
+					<div class="d-sm-flex col-md-4 justify-content-center">
+						<a href="<?=$_SESSION['previous_location']?>" class="btn btn-secondary px-5 mt-lg-5">Zpět</a>
+					</div>
+					<div class="d-sm-flex col-md-4 justify-content-center">
+						<a href="<?='vytvorit-udalost/' . $pojistenec['pojistenci_id'] . '/' . $produkt['pojisteni_id'] . '/' . $udalost['hlaseni_id'] ?>" class="btn btn-primary px-2 mt-lg-5">Vytvořit pojistnou událost</a>
+					</div>
+				<?php else : ?>
+					<div class="d-sm-flex col-md-8 justify-content-center">
+						<a href="<?=$_SESSION['previous_location']?>" class="btn btn-secondary px-5 mt-lg-5">Zpět</a>
+					</div>
+				<?php endif ?>
+			</div>
+		</form>
+	</div>
+</div>

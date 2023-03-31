@@ -1,0 +1,47 @@
+<div class="container">
+	<h2 class="pb-lg-5">Nahlásit škodní událost</h2>
+	
+	<div class="row">	
+		<form action="" class="col" method="post">
+			<div class="d-sm-flex">
+				<div class="form-group col-md-8">
+					<label for="pojisteni">Pojistný produkt</label>
+					<input class="form-control" name="poj_produkt" id="pojisteni" value="<?= htmlspecialchars($produkt['poj_produkt']) ?>" disabled>
+					<input type="hidden" name="produkt_id" value="<?= $produkt['pojisteni_id'] ?>">
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="nazev-udalosti">Název škodní události</label>
+					<input type="text" class="form-control" id="nazev-udalosti" name="nazev" placeholder="živelná událost" value="<?php if(isset($_POST['nazev'])) {echo htmlspecialchars($_POST['nazev']);}?>">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="vyse-skody">Výše škody</label>
+					<input type="number" class="form-control" id="vyse-skody" name="vyse_skody" placeholder="1111" value="<?php if(isset($_POST['vyse_skody'])) {echo htmlspecialchars($_POST['vyse_skody']);}?>">
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="datum-vzniku">Datum vzniku:</label>
+					<input type="text" class="form-control" id="datum-vzniku" name="datum_vzniku" placeholder="1.1.1111" value="<?php if(isset($_POST['datum_vzniku'])) {echo htmlspecialchars($_POST['datum_vzniku']);}?>">
+				</div>
+				<div class="form-group col-md-4">
+					<input type="hidden" class="form-control" name="datum_nahlaseni" value="<?= $datum_nahlaseni ?>">
+					<label for="datum-nahlaseni">Datum nahlášení:</label>
+					<input type="text" class="form-control" id="datum-nahlaseni" value="<?= $datum_nahlaseni ?>" disabled>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="d-sm-flex col-md-4 justify-content-center">
+					<a href="<?=$_SESSION['previous_location']?>" class="btn btn-secondary px-5 mt-lg-5">Zpět</a>
+				</div>
+				<div class="d-sm-flex col-md-4 justify-content-center">
+					<input type="submit" class="btn btn-primary px-5 mt-lg-5" value="Nahlásit">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+	<h1 class="my-lg-3">Informace o aplikaci</h1>
+	<p>Aplikace <strong>PojištěníApp</strong> odpovídá zadání samostatného projektu k závěrečné zkoušce rekvalifikačního programu <strong>Programátor www aplikací v PHP</strong> organizovaného <strong>ITnetwork s.r.o.</strong></p>
+	<p>	Layout aplikace odpovídá ukázkovým obrazovkám (<em>Pojištěnci, Detail pojištěnce, Nový pojištěnec, Přidat pojištění</em>) základní verze aplikace (<em>kompletní správa CRUD pojištěných a jejich pojištění</em>). Aplikace obsahuje doporučené rozšíření (pouze stručné slovní zadání), tzn. implementuje uživatelské role (pojištěný, admin) a evidenci pojistných událostí.</p>
+	<p>Stručný popis výchozí situace:</p>
+    <ul>
+		<li>admin vede evidenci, tzn. edituje osoby, pojistné produkty a události</li>
+		<li>registrace pojištěnce je dobrovolná: osobní údaje + 9místný reg. kód (typicky údaje uvedené v pojistné smlouvě, kterou má pojištěnec u sebe)</li>
+		<li>registrovaný pojištěnec čte informace o svých produktech, událostech a může jednorázově zadat hlášení škodní události, které již nelze měnit</li>
+		<li>pojistnou událost vytváří admin buď na základě (telefonického, papírového) hlášení neregistrovaných pojištěnců, nebo převzetím údajů z hlášení vytvořeného v aplikaci (=&gt; změna stavu hlášení)</li>
+		<li>admin aktualizuje údaje o pojistné události v závislosti na průběhu likvidace pojistné události (plnění)</li>
+	</ul>
+	<p>Přístupové údaje:</p>
+	<ul>
+		<li>uživatelé v tabulce `uzivatele` : veslo</li>
+		<li>např. <em>josefnovy : veslo</em></li>
+	</ul>
+    <h2>Zdrojové kódy</h2>
+    <p>Při tvorbě aplikace jsem adaptoval MVC architekturu ze stejnojmenného tutoriálu ITnetworku, tzn. převzal jsem zejména obecný kontroler, směrovač a databázový wrapper, zbytek jsem kódoval sám. Vzhledem k tomu, že se zde pro názvy funkcí a proměnných používá čeština, zachoval jsem stejný přístup.</p>
+    <p>Pojistná terminologie použitá v zadání projektu je <em>podle mého názoru</em> zmatečná až nesmyslná. V tomto smyslu jsou termíny pojištěnec, pojistník používány v aplikaci jako synonyma.</p>
+</div>

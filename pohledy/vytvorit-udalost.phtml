@@ -1,0 +1,74 @@
+<div class="container">
+	<h2 class="pb-lg-5">Nová pojistná událost pojištěnce <?= $pojistenec['jmeno'] . ' ' . $pojistenec['prijmeni'] ?></h2>
+
+	<div class="row">	
+		<form action="" class="col" method="post">
+			<div class="d-sm-flex">
+				<div class="form-group col-md-8">
+					<label for="pojisteni">Pojistný produkt</label>
+					<input class="form-control" name="poj_produkt" id="pojisteni" value="<?= htmlspecialchars($produkt['poj_produkt'] ) ?>" disabled>
+					<input type="hidden" name="produkt_id" value="<?= $produkt['pojisteni_id'] ?>">
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="nazev-udalosti">Název pojistné události</label>
+					<input type="text" class="form-control" id="nazev-udalosti" name="nazev" placeholder="živelná událost" value="<?php if(isset($_POST['nazev'])) {echo htmlspecialchars($_POST['nazev']);} elseif (!empty($hlaseni['nazev'])) {echo htmlspecialchars($hlaseni['nazev']);}?>">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="vyse-skody">Výše škody</label>
+					<input type="number" class="form-control" id="vyse-skody" name="vyse_skody" placeholder="1111" value="<?php if(isset($_POST['vyse_skody'])) {echo htmlspecialchars($_POST['vyse_skody']);} else {echo htmlspecialchars($hlaseni['vyse_skody']);}?>">
+				</div>
+			</div>
+
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="datum-vzniku">Datum vzniku:</label>
+					<input type="text" class="form-control" id="datum-vzniku" name="datum_vzniku" placeholder="1.1.1111" value="<?php if(isset($_POST['datum_vzniku'])) {echo htmlspecialchars($_POST['datum_vzniku']);} elseif (!empty($hlaseni['datum_vzniku'])) {echo htmlspecialchars(FormatHelper::datumDoFormulare($hlaseni['datum_vzniku']));}?>">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="datum-nahlaseni">Datum nahlášení:</label>
+					<input type="text" class="form-control" id="datum-nahlaseni" name="datum_nahlaseni" placeholder="1.1.1111" value="<?php if(isset($_POST['datum_nahlaseni'])) {echo htmlspecialchars($_POST['datum_nahlaseni']);} elseif (!empty($hlaseni['datum_vzniku'])) {echo htmlspecialchars(FormatHelper::datumDoFormulare($hlaseni['datum_nahlaseni']));}?>">
+				</div>
+			</div>
+			
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="spoluucast">Spoluúčast</label>
+					<input type="number" class="form-control" id="spoluucast" name="spoluucast" placeholder="1111" value="<?php if(isset($_POST['spoluucast'])) {echo htmlspecialchars($_POST['spoluucast']);} ?>">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="vyse-plneni">Výše plnění</label>
+					<input type="number" class="form-control" id="vyse-plneni" name="vyse_plneni" placeholder="1111" value="<?php if(isset($_POST['vyse_plneni'])) {echo htmlspecialchars($_POST['vyse_plneni']);} ?>">
+				</div>
+			</div>
+			
+			<div class="d-sm-flex">
+				<div class="form-group col-md-4">
+					<label for="datum-schvaleni">Datum schválení:</label>
+					<input type="text" class="form-control" id="datum-schvaleni" name="datum_schvaleni" placeholder="1.1.1111" value="<?php if(isset($_POST['datum_schvaleni'])) {echo htmlspecialchars($_POST['datum_schvaleni']);} ?>">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="datum-vyplaty">Datum výplaty:</label>
+					<input type="text" class="form-control" id="datum-vyplaty" name="datum_vyplaty" placeholder="1.1.1111" value="<?php if(isset($_POST['datum_vyplaty'])) {echo htmlspecialchars($_POST['datum_vyplaty']);} ?>">
+				</div>
+			</div>
+
+			<?php if ($uzivatel['admin']) : ?>
+			<div class="row">
+				<div class="d-sm-flex col-md-4 justify-content-center">
+					<a href="<?=$_SESSION['previous_location']?>" class="btn btn-secondary px-5 mt-lg-5">Zpět</a>
+				</div>
+				<div class="d-sm-flex col-md-4 justify-content-center">
+					<input type="submit" class="btn btn-primary px-5 mt-lg-5" value="Uložit">
+				</div>
+			</div>
+				<?php else : ?>
+			<div class="d-sm-flex col-md-8 justify-content-center">
+				<a href="<?=$_SESSION['previous_location']?>" class="btn btn-secondary px-5 mt-lg-5">Zpět</a>
+			</div>
+			<?php endif ?>
+		</form>
+	</div>
+</div>
